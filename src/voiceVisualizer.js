@@ -20,7 +20,8 @@ export default class VoiceVisualizer {
 
     wave.fromStream(this.audioStream, "output", {
       type: "bars",
-      colors: ["blue", "3498db"],
+      // colors: ["blue", "3498db"],
+      colors: ["red", "green"],
       stroke: 1,
     });
   }

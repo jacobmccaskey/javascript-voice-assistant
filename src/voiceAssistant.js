@@ -44,6 +44,7 @@ export default class VoiceAssistant {
 
       const wordIdx = scores.findIndex((v) => v === wordScore);
       const word = classLabels[wordIdx];
+      console.log(word);
 
       if (onListen) onListen(word);
     }, this.options);

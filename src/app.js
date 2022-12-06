@@ -33,13 +33,8 @@ async function processWord(word) {
       break;
     case "Play a Song":
       voiceAssistant.saySpeech(
-        "We are friends in a sleeping bag splitting the heat"
+        "One of your todos is connecting to Spotify's Music API"
       );
-      voiceAssistant.saySpeech(
-        "We have one filthy pillow to share and your lips are in my hair"
-      );
-      voiceAssistant.saySpeech("Someone upstairs has a rat that we laughed at");
-      await wait(3000);
       break;
   }
 
@@ -47,13 +42,23 @@ async function processWord(word) {
 }
 
 function onListen(word) {
+  if (!isStarted && word === 'Hello') {
+    isStarted = true;
+  };
+  if (isStarted && word === 'Stop') {
+    isStarted = false;
+    return;
+  }
   if (processingWord) return;
 
   console.log("Word: ", word);
   processingWord = word;
   processWord(word);
 }
+const vocalInitialization = async ()=> {
+  await voiceAssistant.startAssistant(onListen);
 
+}
 startButton.onclick = async () => {
   if (!isStarted) {
     //Start assistant
@@ -71,3 +76,5 @@ startButton.onclick = async () => {
     startButton.innerText = "Start Assistant";
   }
 };
+
+vocalInitialization();

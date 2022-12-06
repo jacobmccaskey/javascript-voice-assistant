@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "start:dev": "webpack-cli serve --port 3000 --mode development"
+    "dev": "webpack-cli serve --port 3000 --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
